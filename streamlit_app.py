@@ -1,19 +1,20 @@
-import streamlit as st
+import streamlit
+import pandas
 
-def main():
-    st.title("My Mom's New Healthy Diner")
-    
-    st.header('Breakfast Menu')
-    
-    st.write('🥣 Omega 3 & Blueberry Oatmeal')
-    
-    st.write('🥗 Kale, Spinach & Rocket Smoothie')
-    
-    st.write('🐔 Hard-Boiled Free-Range Egg')
-    
-    st.write('🥑🍞 Avocado Toast')
-    
-    st.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
+streamlit.title("My Mom's New Healthy Diner")
 
-if __name__ == '__main__':
-    main()
+# Breakfast menu
+streamlit.header("Breakfast Menu")
+streamlit.write("🥣 Omega 3 & Blueberry Oatmeal")
+streamlit.write("🥗 Kale, Spinach & Rocket Smoothie")
+streamlit.write("🐔 Hard-Boiled Free-Range Egg")
+streamlit.write("🥑🍞 Avocado Toast 🥑🍞")
+
+# Special menu item
+streamlit.header("🍌🥭 Build Your Own Fruit Smoothie 🥝🍇")
+
+# Read CSV file into dataframe
+my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
+
+# Display dataframe
+streamlit.dataframe(my_fruit_list)
