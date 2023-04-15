@@ -11,7 +11,9 @@ def main():
     
     st.write('🐔 Hard-Boiled Free-Range Egg')
     
-    st.write('🥑 Avocado Toast')
+    st.write('🥑🍞 Avocado Toast')
+    
+    st.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
 if __name__ == '__main__':
     main()
