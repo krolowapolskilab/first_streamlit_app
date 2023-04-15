@@ -10,6 +10,8 @@ def main():
     st.write('🥗 Kale, Spinach & Rocket Smoothie')
     
     st.write('🐔 Hard-Boiled Free-Range Egg')
+    
+    st.write('🥑 Avocado Toast')
 
 if __name__ == '__main__':
     main()
