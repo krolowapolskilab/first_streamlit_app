@@ -68,7 +68,7 @@ try:
         warehouse="pc_rivery_wh",
         database="pc_rivery_db",
         schema="public"
-        role="accountadmin"
+        role="pc_rivery_role"
     )
     st.write("Connection successful!")
     cnx.close()
