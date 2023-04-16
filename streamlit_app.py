@@ -66,15 +66,14 @@ try:
         database="pc_rivery_db",
         schema="public"
     )
-    st.write("Connection successful!")
-    
     # Query the data from the fruit_load_list table
     cur = cnx.cursor()
     cur.execute("SELECT * FROM fruit_load_list")
     rows = cur.fetchall()
-    st.write("The fruit load list contains:")
-    for row in rows:
-        st.write(row)
+    
+    # Display the data
+    st.header("Fruit load list contains:")
+    st.dataframe(rows)
     
     cnx.close()
 except Exception as e:
