@@ -61,12 +61,12 @@ SNOWFLAKE_CREDS = st.secrets["snowflake"]
 
 # Create Snowflake connection
 cnx = snowflake.connector.connect(
-    user=SNOWFLAKE_CREDS["user"],
-    password=SNOWFLAKE_CREDS["password"],
-    account=SNOWFLAKE_CREDS["account"],
-    warehouse=SNOWFLAKE_CREDS["warehouse"],
-    database=SNOWFLAKE_CREDS["database"],
-    schema=SNOWFLAKE_CREDS["schema"],
+    user=SNOWFLAKE_CREDS["krolowapolski"],
+    password=SNOWFLAKE_CREDS["Sunny4Ever2019"],
+    account=SNOWFLAKE_CREDS["jo55688"],
+    warehouse=SNOWFLAKE_CREDS["pc_rivery_wh"],
+    database=SNOWFLAKE_CREDS["pc_rivery_db"],
+    schema=SNOWFLAKE_CREDS["public"],
 )
 
 
