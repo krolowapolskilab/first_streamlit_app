@@ -53,8 +53,8 @@ st.dataframe(fruityvice_normalized)
 
 import snowflake.connector
 
-import streamlit as st
 import snowflake.connector
+import streamlit as st
 
 # Connect to Snowflake
 try:
@@ -67,6 +67,15 @@ try:
         schema="public"
     )
     st.write("Connection successful!")
+    
+    # Query the data from the fruit_load_list table
+    cur = cnx.cursor()
+    cur.execute("SELECT * FROM fruit_load_list")
+    rows = cur.fetchall()
+    st.write("The fruit load list contains:")
+    for row in rows:
+        st.write(row)
+    
     cnx.close()
 except Exception as e:
     st.write("Connection failed: ", e)
