@@ -79,25 +79,46 @@ try:
 except Exception as e:
     st.write("Connection failed: ", e)
 
+import snowflake.connector
+import streamlit as st
+
+# Connect to Snowflake
+cnx = snowflake.connector.connect(
+    user="krolowapolski",
+    password="Sunny4Ever2019",
+    account="jo55688.ca-central-1.aws",
+    warehouse="pc_rivery_wh",
+    database="pc_rivery_db",
+    schema="public"
+)
+
+# Add default fruits to the list
+default_fruits = ["jackfruit", "papaya", "guava", "kiwi"]
+with cnx.cursor() as cur:
+    for fruit in default_fruits:
+        cur.execute(f"INSERT INTO fruit_load_list VALUES ('{fruit}')")
+    cnx.commit()
+
+# Query the data from the fruit_load_list table
+cur = cnx.cursor()
+cur.execute("SELECT * FROM fruit_load_list")
+rows = cur.fetchall()
+
+# Display the data
+st.header("Fruit load list contains:")
+st.dataframe(rows)
+
 # Allow the end user to add a fruit to the list
 fruit_choice = st.text_input('What fruit would you like to add?', 'Kiwi')
 
 if st.button('Add fruit'):
     try:
-        cnx = snowflake.connector.connect(
-            user="krolowapolski",
-            password="Sunny4Ever2019",
-            account="jo55688.ca-central-1.aws",
-            warehouse="pc_rivery_wh",
-            database="pc_rivery_db",
-            schema="public"
-        )
-
         with cnx.cursor() as cur:
             cur.execute(f"INSERT INTO fruit_load_list VALUES ('{fruit_choice}')")
             cnx.commit()
         
         st.success(f"Thanks for adding {fruit_choice}!")
-        cnx.close()
     except Exception as e:
         st.error(f"Error adding {fruit_choice}: {e}")
+
+cnx.close()
