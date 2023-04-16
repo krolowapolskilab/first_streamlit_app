@@ -67,6 +67,7 @@ cnx = snowflake.connector.connect(
     warehouse=SNOWFLAKE_CREDS["pc_rivery_wh"],
     database=SNOWFLAKE_CREDS["pc_rivery_db"],
     schema=SNOWFLAKE_CREDS["public"],
+    role=SNOWFLAKE_CREDS["accountadmin"]
 )
 
 
