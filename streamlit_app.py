@@ -31,15 +31,23 @@ st.dataframe(filtered_fruit_list)
 
 # New Section to display fruityvice api response
 import streamlit as st
+import pandas
 import requests
-import pandas as pd
 
 st.header("Fruityvice Fruit Advice!")
 
-fruit_name = "kiwi"
-url = f"https://fruityvice.com/api/fruit/{fruit_name}"
-fruityvice_response = requests.get(url)
+# Add a text entry box for the user to input their desired fruit
+fruit_choice = st.text_input('What fruit would you like information about?', 'Kiwi')
+st.write('The user entered:', fruit_choice)
 
-fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
+# Separate the base URL from the fruit name
+base_url = "https://fruityvice.com/api/fruit/"
+fruit_url = base_url + fruit_choice.lower()
+
+# Send the API request using the fruit URL
+fruityvice_response = requests.get(fruit_url)
+
+# Normalize the JSON data and display in a dataframe
+fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 st.dataframe(fruityvice_normalized)
 
