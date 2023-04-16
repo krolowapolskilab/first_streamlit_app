@@ -80,8 +80,25 @@ except Exception as e:
     st.write("Connection failed: ", e)
 
 # Allow the end user to add a fruit to the list
-def insert_row_snowflake(new_fruit):
-    with my_cnx.cursor() as my_cur:
-        my_cur.execute("INSERT INTO fruit_load_list VALUES ('{}')".format(new_fruit))
-    return "Thanks for adding " + new_fruit
+fruit_choice = st.text_input('What fruit would you like to add?', 'Kiwi')
+
+if st.button('Add fruit'):
+    try:
+        cnx = snowflake.connector.connect(
+            user="krolowapolski",
+            password="Sunny4Ever2019",
+            account="jo55688.ca-central-1.aws",
+            warehouse="pc_rivery_wh",
+            database="pc_rivery_db",
+            schema="public"
+        )
+
+        with cnx.cursor() as cur:
+            cur.execute(f"INSERT INTO fruit_load_list VALUES ('{fruit_choice}')")
+            cnx.commit()
+        
+        st.success(f"Thanks for adding {fruit_choice} to the list!")
+        cnx.close()
+    except Exception as e:
+        st.error(f"Error adding {fruit_choice}: {e}")
 
