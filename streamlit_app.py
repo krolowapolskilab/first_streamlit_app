@@ -53,5 +53,5 @@ st.dataframe(fruityvice_normalized)
 
 import snowflake.connector
 
-snowflake.connector.connect()
+streamlit.secrets["snowflake"]
 
