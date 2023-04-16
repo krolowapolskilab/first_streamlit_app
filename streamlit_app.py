@@ -29,6 +29,11 @@ filtered_fruit_list = my_fruit_list.loc[selected_fruits, :]
 # Display the filtered dataframe
 st.dataframe(filtered_fruit_list)
 
+# New Section to display fruityvice api response
 import streamlit as st
 
 st.header("Fruityvice Fruit Advice!")
+
+import requests
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+streamlit.text(fruityvice_response.json())
