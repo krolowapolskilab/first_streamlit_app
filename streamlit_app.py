@@ -64,7 +64,7 @@ try:
     cnx = snowflake.connector.connect(
         user="krolowapolski",
         password="Sunny4Ever2019",
-        account="jo55688",
+        account="jo55688.ca-central-1.aws",
         warehouse="pc_rivery_wh",
         database="pc_rivery_db",
         schema="public"
