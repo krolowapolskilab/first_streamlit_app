@@ -55,3 +55,22 @@ import snowflake.connector
 
 import streamlit as st
 import snowflake.connector
+
+import snowflake.connector
+import streamlit as st
+
+# Connect to Snowflake
+try:
+    cnx = snowflake.connector.connect(
+        user="krolowapolski",
+        password="Sunny4Ever2019",
+        account="jo55688",
+        warehouse="pc_rivery_wh",
+        database="pc_rivery_db",
+        schema="public"
+        role="accountadmin"
+    )
+    st.write("Connection successful!")
+    cnx.close()
+except Exception as e:
+    st.write("Connection failed: ", e)
