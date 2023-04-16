@@ -51,3 +51,4 @@ fruityvice_response = requests.get(fruit_url)
 fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 st.dataframe(fruityvice_normalized)
 
+import snowflake.connector
