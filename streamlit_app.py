@@ -101,4 +101,36 @@ if st.button('Add fruit'):
         cnx.close()
     except Exception as e:
         st.error(f"Error adding {fruit_choice}: {e}")
+               
+import snowflake.connector
+import streamlit as st
 
+# Connect to Snowflake
+cnx = snowflake.connector.connect(
+    user="krolowapolski",
+    password="Sunny4Ever2019",
+    account="jo55688.ca-central-1.aws",
+    warehouse="pc_rivery_wh",
+    database="pc_rivery_db",
+    schema="public"
+)
+
+# Query the data from the fruit_load_list table
+cur = cnx.cursor()
+cur.execute("SELECT * FROM fruit_load_list")
+rows = cur.fetchall()
+
+# Display the data
+st.header("Fruit load list contains:")
+st.dataframe(rows)
+
+# Allow the end user to add a fruit to the list
+fruit_choice = st.text_input('What fruit would you like to add?', 'Kiwi')
+if st.button('Add Fruit'):
+    with cnx.cursor() as cur:
+        cur.execute("INSERT INTO fruit_load_list VALUES ('{}')".format(fruit_choice))
+        cnx.commit()
+        st.write("Thanks for adding", fruit_choice)
+    
+cnx.close()
+               
