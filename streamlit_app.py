@@ -56,19 +56,17 @@ import snowflake.connector
 import streamlit as st
 import snowflake.connector
 
-import snowflake.connector
-import streamlit as st
-
-# Connect to Snowflake using Streamlit secrets
-conn_params = st.secrets["snowflake"]
-cnx = snowflake.connector.connect(**conn_params)
-
-# Execute a simple query to fetch data from the "fruit_load_list" table
-cur = cnx.cursor()
-cur.execute("SELECT * FROM fruit_load_list")
-data = cur.fetchone()
-
-# Display the result using the streamlit.text() function
-st.text("The fruit load list contains:")
-st.text(data)
-
+# Connect to Snowflake
+try:
+    cnx = snowflake.connector.connect(
+        user="krolowapolski",
+        password="Sunny4Ever2019",
+        account="jo55688.ca-central-1.aws",
+        warehouse="pc_rivery_wh",
+        database="pc_rivery_db",
+        schema="public"
+    )
+    st.write("Connection successful!")
+    cnx.close()
+except Exception as e:
+    st.write("Connection failed: ", e)
