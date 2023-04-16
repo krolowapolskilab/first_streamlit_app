@@ -31,14 +31,15 @@ st.dataframe(filtered_fruit_list)
 
 # New Section to display fruityvice api response
 import streamlit as st
+import requests
+import pandas as pd
 
 st.header("Fruityvice Fruit Advice!")
 
-import requests
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-st.text(fruityvice_response.json())
+base_url = "https://fruityvice.com/api/fruit/"
+fruit = "watermelon"
+fruityvice_response = requests.get(base_url + fruit)
 
-# write your own comment -what does the next line do? 
-fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
-# write your own comment - what does this do?
-streamlit.dataframe(fruityvice_normalized)
+fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
+st.dataframe(fruityvice_normalized)
+
