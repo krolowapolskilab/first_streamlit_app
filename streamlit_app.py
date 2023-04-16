@@ -97,7 +97,7 @@ if st.button('Add fruit'):
             cur.execute(f"INSERT INTO fruit_load_list VALUES ('{fruit_choice}')")
             cnx.commit()
         
-        st.success(f"Thanks for adding {fruit_choice} to the list!")
+        st.success(f"Thanks for adding {fruit_choice}!")
         cnx.close()
     except Exception as e:
         st.error(f"Error adding {fruit_choice}: {e}")
