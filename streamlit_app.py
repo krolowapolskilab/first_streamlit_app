@@ -53,11 +53,20 @@ st.dataframe(fruityvice_normalized)
 
 import snowflake.connector
 
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-my_cur = my_cnx.cursor()
-my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
-my_data_row = my_cur.fetchone()
-streamlit.text("Hello from Snowflake:")
-streamlit.text(my_data_row)
+import streamlit as st
+import snowflake.connector
+
+# Use Streamlit secrets to get Snowflake credentials
+SNOWFLAKE_CREDS = st.secrets["snowflake"]
+
+# Create Snowflake connection
+cnx = snowflake.connector.connect(
+    user=SNOWFLAKE_CREDS["user"],
+    password=SNOWFLAKE_CREDS["password"],
+    account=SNOWFLAKE_CREDS["account"],
+    warehouse=SNOWFLAKE_CREDS["warehouse"],
+    database=SNOWFLAKE_CREDS["database"],
+    schema=SNOWFLAKE_CREDS["schema"],
+)
 
 
