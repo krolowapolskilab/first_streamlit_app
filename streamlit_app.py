@@ -57,11 +57,11 @@ import streamlit as st
 import snowflake.connector
 
 my_cnx = snowflake.connector.connect(
-   account = "jo55688"
-   user = "krolowapolski"
-   password = "sunny4ever2019"
-   database = "pc_rivery_db"
-   schema = "public"
-   warehouse = "pc_rivery_wh"
-   role = "accountadmin"
+   account="jo55688",
+   user="krolowapolski",
+   password="sunny4ever2019",
+   database="pc_rivery_db",
+   schema="public",
+   warehouse="pc_rivery_wh",
+   role="accountadmin"
 )
