@@ -56,8 +56,6 @@ import snowflake.connector
 import streamlit as st
 import snowflake.connector
 
-python -m pip install --upgrade pip
-
 # Use Streamlit secrets to get Snowflake credentials
 SNOWFLAKE_CREDS = st.secrets["snowflake"]
 
