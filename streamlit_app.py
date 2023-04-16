@@ -29,18 +29,6 @@ filtered_fruit_list = my_fruit_list.loc[selected_fruits, :]
 # Display the filtered dataframe
 st.dataframe(filtered_fruit_list)
 
-import requests
 import streamlit as st
 
-# Make the API request
-response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-
-# Parse the JSON response
-data = response.json()
-
-# Display the fruit information
-st.write("Name:", data["name"])
-st.write("Genus:", data["genus"])
-st.write("Family:", data["family"])
-st.write("Nutrition:", data["nutritions"])
-st.write("Image:", data["image"])
+st.header("Fruityvice Fruit Advice!")
