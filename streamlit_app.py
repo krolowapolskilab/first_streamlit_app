@@ -81,11 +81,7 @@ except Exception as e:
 
 # Allow the end user to add a fruit to the list
 def insert_row_snowflake(new_fruit):
-    try:
-        with my_cnx.cursor() as my_cur:
-            query = f"INSERT INTO fruit_load_list VALUES ('{new_fruit}')"
-            my_cur.execute(query)
-            my_cnx.commit()
-            return "Thanks for adding " + new_fruit
-    except Exception as e:
-        return "Insert failed: " + str(e)
+    with my_cnx.cursor() as my_cur:
+        my_cur.execute("INSERT INTO fruit_load_list VALUES ('{}')".format(new_fruit))
+    return "Thanks for adding " + new_fruit
+
