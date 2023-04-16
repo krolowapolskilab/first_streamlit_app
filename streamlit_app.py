@@ -36,9 +36,9 @@ import pandas as pd
 
 st.header("Fruityvice Fruit Advice!")
 
-base_url = "https://fruityvice.com/api/fruit/"
-fruit = "watermelon"
-fruityvice_response = requests.get(base_url + fruit)
+fruit_name = "kiwi"
+url = f"https://fruityvice.com/api/fruit/{fruit_name}"
+fruityvice_response = requests.get(url)
 
 fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 st.dataframe(fruityvice_normalized)
