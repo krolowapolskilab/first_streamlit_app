@@ -101,6 +101,3 @@ if st.button('Add fruit'):
         cnx.close()
     except Exception as e:
         st.error(f"Error adding {fruit_choice}: {e}")
-               
-#This will not work correctly, but just go with it for now
-my_cur.execute("insert into fruit_load_list values ('from streamlit')"
